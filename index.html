@@ -9,17 +9,107 @@
       type="image/x-icon"
       sizes="96x96"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <meta name="description" content="A minimal blog card design showcasing the beauty of simplicity in art and lifestyle." />
+    <meta
+      name="description"
+      content="A minimal blog card design showcasing the beauty of simplicity in art and lifestyle."
+    />
     <title>devChallenges.io | Minimal Blog Card</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="resources/Cactus.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
 
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        font-family: Ubuntu, sans-serif;
+        background-color: #fefefe;
+      }
+
+      .author-info {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 16px;
+        color: rgb(55, 65, 81);
+      }
+
+      .author-info a {
+        text-decoration: none;
+      }
+
+      #main-window {
+        width: 400px;
+        height: 400px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: #ffffff;
+        margin-top: 160px;
+      }
+
+      #main-window img {
+        display: block;
+        width: 90%;
+        margin: 15px auto 20px auto;
+        border-radius: 10px;
+      }
+
+      h1 {
+        padding-left: 18px;
+        margin-top: 10px;
+        font-weight: 450;
+        font-size: 24px;
+      }
+
+      #text {
+        padding-left: 18px;
+        margin-top: 5px;
+        color: #7e8084;
+      }
+
+      hr {
+        border: 1px solid #e5eaf0;
+        margin-top: 20px;
+      }
+
+      #author-info {
+        margin-top: 15px;
+        padding-left: 18px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #696b6e;
+      }
+
+      #design-tag {
+        display: inline-block;
+        background-color: #f8f5fe;
+        color: #733aab;
+        border-radius: 40px;
+        height: 23px;
+        width: 75px;
+        margin-left: 20px;
+        text-align: center;
+        line-height: 23px;
+        font-weight: bolder;
+        font-size: smaller;
+      }
+    </style>
   </head>
   <body>
     <div id="main-window">
-      <img src="resources/Cactus.jpg" alt="Cactus" />
+      <img src="resources/Cactus.jpg" alt="Cactus" width="336" height="172"/>
       <div id="design-tag">Design</div>
       <h1>Embracing Minimalism</h1>
       <p id="text">
@@ -27,7 +117,9 @@
         inspire you to appreciate the beauty that lies in simplicity.
       </p>
       <hr />
-      <p id="author-info"><a href="https://www.youtube.com/" target="_blank">Annie Spratt</a></p>
+      <p id="author-info">
+        <a href="https://www.youtube.com/" target="_blank">Annie Spratt</a>
+      </p>
     </div>
   </body>
 </html>
