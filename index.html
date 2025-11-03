@@ -10,16 +10,13 @@
       content="A minimal blog card design showcasing the beauty of simplicity in art and lifestyle."
     />
 
-    <link rel="icon" href="resources/favicon.ico" type="image/x-icon" sizes="96x96" />
+    <link
+      rel="preload"
+      as="image"
+      href="resources/Cactus.webp"
+      fetchpriority="high"
+    />
 
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="resources/Cactus.webp" fetchpriority="high" />
-
-    <!-- Preconnect early for fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Defer Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -49,14 +46,46 @@
         border-radius: 10px;
         background-color: #fff;
         margin-top: 160px;
-        transition: all 0.2s ease;
       }
 
-      #main-window img {
-        display: block;
+      .img-wrapper {
+        position: relative;
         width: 90%;
+        height: 172px;
         margin: 15px auto 20px auto;
         border-radius: 10px;
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #design-tag,
+      h1,
+      #text,
+      #author-info {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #design-tag {
+        display: inline-block;
+        background-color: #f8f5fe;
+        color: #733aab;
+        border-radius: 40px;
+        height: 23px;
+        width: 75px;
+        margin-left: 20px;
+        text-align: center;
+        line-height: 23px;
+        font-weight: 700;
+        font-size: 13px;
       }
 
       h1 {
@@ -87,46 +116,70 @@
         color: #696b6e;
       }
 
-      #design-tag {
-        display: inline-block;
-        background-color: #f8f5fe;
-        color: #733aab;
-        border-radius: 40px;
-        height: 23px;
-        width: 75px;
+      /* ✅ Skeleton style */
+      .skeleton {
+        background-color: hsl(0, 0%, 85%);
+        opacity: 1;
+        animation: skeleton-loader 1s linear infinite alternate;
+        border-radius: 5px;
+      }
+
+      #tag-skeleton,
+      #title-skeleton,
+      #text-skeleton,
+      #author-skeleton {
         margin-left: 20px;
-        text-align: center;
-        line-height: 23px;
-        font-weight: 700;
-        font-size: 13px;
+        margin-top: 10px;
       }
 
-      .author-info {
-        font-size: 14px;
-        text-align: center;
-        margin-top: 16px;
-        color: rgb(55, 65, 81);
+      #tag-skeleton {
+        width: 75px;
+        height: 23px;
+        border-radius: 40px;
       }
 
-      /* Keep your media rule unchanged */
-      @media (max-width: 412px) {
-        #main-window {
-          width: 350px;
-          height: 410px;
-        }
+      #title-skeleton {
+        width: 60%;
+        height: 24px;
+      }
+
+      #text-skeleton {
+        width: 85%;
+        height: 38px;
+        margin-top: 8px;
+      }
+
+      #author-skeleton {
+        width: 110px;
+        height: 18px;
+        margin-top: 20px;
+      }
+
+      @keyframes skeleton-loader {
+        0% {
+          background-color: hsl(0, 0%, 82%);
+        } 
+        100% {
+          background-color: hsl(0, 0%, 90%);
+        } 
       }
     </style>
   </head>
 
   <body>
     <div id="main-window">
-      <img
-        src="resources/Cactus.webp"
-        alt="Cactus"
-        width="336"
-        height="172"
-        fetchpriority="high"
-      />
+      <div class="img-wrapper">
+        <div id="img-skeleton" class="skeleton"></div>
+        <img src="resources/Cactus.webp" alt="Cactus" fetchpriority="high" />
+      </div>
+
+      <!-- ✅ Skeleton placeholders -->
+      <div id="tag-skeleton" class="skeleton"></div>
+      <div id="title-skeleton" class="skeleton"></div>
+      <div id="text-skeleton" class="skeleton"></div>
+      <div id="author-skeleton" class="skeleton"></div>
+
+      <!-- ✅ Real content hidden until loaded -->
       <div id="design-tag">Design</div>
       <h1>Embracing Minimalism</h1>
       <p id="text">
@@ -138,5 +191,20 @@
         <a href="https://www.youtube.com/" target="_blank">Annie Spratt</a>
       </p>
     </div>
+
+    <script>
+      const img = document.querySelector("img");
+
+      img.onload = () => {
+        document.querySelectorAll(".skeleton").forEach((el) => el.remove());
+
+        img.style.visibility = "visible";
+        img.style.opacity = "1";
+
+        document
+          .querySelectorAll("#design-tag, h1, #text, #author-info")
+          .forEach((el) => (el.style.opacity = "1"));
+      };
+    </script>
   </body>
 </html>
