@@ -41,13 +41,13 @@
 
       #main-window {
         width: 400px;
-        height: 400px;
+        height: 410px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding-top: 5px;
         border-radius: 10px;
         background-color: #fff;
         margin-top: 160px;
       }
-
       .img-wrapper {
         position: relative;
         width: 90%;
@@ -57,10 +57,26 @@
         overflow: hidden;
       }
 
+      .skeleton {
+        position: relative;
+        background: #e0e0e0;
+        overflow: hidden;
+      }
+
+      #img-skeleton {
+        position: absolute;
+        inset: 0;
+        z-index: 0; /* behind */
+      }
+
       img {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
         width: 100%;
         height: 100%;
-        border-radius: 10px;
+        object-fit: cover;
+        object-position: center;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -145,13 +161,6 @@
         width: 110px;
         height: 18px;
         margin-top: 20px;
-      }
-
-      /* ✅ HIGH PERFORMANCE COMPOSITED SKELETON SHIMMER */
-      .skeleton {
-        position: relative;
-        background: #e0e0e0;
-        overflow: hidden;
       }
 
       .skeleton::after {
