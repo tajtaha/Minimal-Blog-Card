@@ -10,6 +10,8 @@ Welcome to this responsive web coding challenge.
 
 **Suggested Skills to practice: HTML and CSS**
 
+Open the Link: https://minimal-blog-card-pi.vercel.app/
+
 ## The challenge
 
 Your task is to create a web page that closely resembles the provided design.
